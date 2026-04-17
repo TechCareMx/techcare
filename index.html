@@ -467,6 +467,23 @@
   .contact-method:last-child { border-bottom: none; padding-bottom: 0; }
   .contact-method:first-child { padding-top: 0; }
 
+  .contact-method-link {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border2);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .contact-method-link:first-child { padding-top: 0; }
+
+  .contact-method-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+
   .contact-icon {
     width: 36px; height: 36px;
     background: var(--cream2);
@@ -898,16 +915,16 @@
           </div>
         </div>
         <div class="contact-card">
-          <div class="contact-method">
+          <a href="https://wa.me/526561998772?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20de%20TechCare%20y%20necesito%20soporte%20t%C3%A9cnico." target="_blank" rel="noopener" class="contact-method-link">
             <div class="contact-icon">
               <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
             <div>
               <p class="contact-type">WhatsApp</p>
-              <a href="https://wa.me/XXXXXXXXXX" class="contact-value" style="text-decoration:none; color:var(--ink);" data-en="Open WhatsApp" data-es="Abrir WhatsApp">Open WhatsApp</a>
+              <p class="contact-value" data-en="Open WhatsApp" data-es="Abrir WhatsApp">Open WhatsApp</p>
               <p class="contact-note" data-en="Response times may vary depending on demand." data-es="Los tiempos de respuesta pueden variar según la demanda.">Response times may vary depending on demand.</p>
             </div>
-          </div>
+          </a>
           <div class="contact-method">
             <div class="contact-icon">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
