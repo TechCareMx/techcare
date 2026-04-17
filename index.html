@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TechCare — Remote technical support for your personal devices. Diagnosis, configuration, and troubleshooting delivered remotely.">
+<title>TechCare — Remote Technical Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F8FAFC;
+    --cream2: #F1F5F9;
+    --ink: #0F172A;
+    --ink2: #334155;
+    --ink3: #64748B;
+    --ink4: #94A3B8;
+    --border: #E2E8F0;
+    --border2: #F1F5F9;
+    --accent: #2563EB;
+    --accent-mid: #1D4ED8;
+    --accent-light: #eff6ff;
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --error: #DC2626;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    animation: fadeDown 0.5s ease both;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+  }
+
+  .nav-wordmark {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; align-items: center;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    color: var(--ink3);
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-contact {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent);
+    padding: 6px 16px;
+    border-radius: 100px;
+    transition: all 0.15s !important;
+  }
+
+  .nav-contact:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+  }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 8px;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink3);
+    cursor: pointer;
+    padding: 4px 6px;
+    letter-spacing: 0.05em;
+  }
+  .lang-btn.active { color: var(--ink); }
+  .lang-sep { color: var(--ink4); font-size: 12px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    gap: 4rem;
+  }
+
+  .hero-left { animation: fadeUp 0.7s 0.1s ease both; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-tag-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease infinite;
+  }
+
+  .hero-h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--ink3);
+  }
+
+  .hero-h1-sub {
+    font-size: 0.58em;
+    color: var(--ink3);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-h1-sub em {
+    font-style: italic;
+    color: var(--ink4);
+  }
+
+  .hero-body {
+    font-size: 16px;
+    color: var(--ink2);
+    line-height: 1.75;
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px; font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover { background: var(--accent-mid); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--ink2);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.15s;
+  }
+
+  .btn-secondary:hover { color: var(--ink); }
+  .btn-secondary::after { content: '→'; transition: transform 0.15s; }
+  .btn-secondary:hover::after { transform: translateX(3px); }
+
+  .hero-right {
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .hero-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 18px rgba(15,23,42,0.05);
+  }
+
+  .hero-card-header {
+    background: var(--ink);
+    padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .card-dots { display: flex; gap: 6px; }
+  .card-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .card-dot.r { background: #ff5f57; }
+  .card-dot.y { background: #febc2e; }
+  .card-dot.g { background: #28c840; }
+
+  .card-title-bar {
+    flex: 1; text-align: center;
+    font-size: 12px; color: rgba(248,250,252,0.4);
+    font-family: var(--sans);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-card-body { padding: 1.125rem 1.25rem; }
+
+  .card-message {
+    display: flex; gap: 10px; align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .card-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 500; color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .card-bubble {
+    background: var(--cream2);
+    border-radius: 4px 14px 14px 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--ink2);
+    line-height: 1.5;
+    max-width: 260px;
+  }
+
+  .card-bubble.right {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 14px 4px 14px 14px;
+    margin-left: auto;
+  }
+
+  .card-message.right { flex-direction: row-reverse; }
+
+  .card-status {
+    margin-top: 1.25rem;
+    padding: 0.875rem;
+    background: var(--accent-light);
+    border-radius: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .status-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 13px; flex-shrink: 0;
+  }
+
+  .status-text { font-size: 12px; }
+  .status-title { font-weight: 500; color: var(--ink); margin-bottom: 1px; }
+  .status-sub { color: var(--ink3); font-size: 11px; }
+
+  /* ── SECTIONS ── */
+  section { scroll-margin-top: 70px; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-tag {
+    font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ink3);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .section-lead {
+    font-size: 16px; color: var(--ink2);
+    line-height: 1.75; font-weight: 400;
+    max-width: 520px; margin-bottom: 3rem;
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border2);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: #fff; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .service-item {
+    background: #fff;
+    padding: 2rem;
+  }
+
+  .service-icon {
+    width: 40px; height: 40px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+
+  .service-name {
+    font-size: 15px; font-weight: 500;
+    color: var(--ink); margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-size: 13px; color: var(--ink3);
+    line-height: 1.6; font-weight: 400;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    display: none;
+  }
+
+  .step { position: relative; z-index: 1; }
+
+  .step-num {
+    width: 40px; height: 40px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .step-title {
+    font-size: 15px; font-weight: 500;
+    color: var(--ink); margin-bottom: 0.5rem;
+  }
+
+  .step-desc {
+    font-size: 13px; color: var(--ink3);
+    line-height: 1.6; font-weight: 400;
+  }
+
+  .step-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 3px 8px; border-radius: 100px;
+    margin-top: 8px;
+  }
+
+  /* ── NOTICE ── */
+  .notice-strip {
+    background: #1e3a5f;
+    color: var(--cream);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 1rem; flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .notice-strip p {
+    font-size: 13px; color: rgba(248,250,252,0.7);
+    font-weight: 400; letter-spacing: 0.02em;
+  }
+
+  .notice-strip strong { color: var(--cream); font-weight: 500; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .contact-method {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .contact-method:last-child { border-bottom: none; padding-bottom: 0; }
+  .contact-method:first-child { padding-top: 0; }
+
+  .contact-icon {
+    width: 36px; height: 36px;
+    background: var(--cream2);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 16px; height: 16px; stroke: var(--ink2); fill: none; stroke-width: 1.5; }
+
+  .contact-type {
+    font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink3); margin-bottom: 2px;
+  }
+
+  .contact-value {
+    font-size: 14px; font-weight: 500; color: var(--ink);
+  }
+
+  .contact-note { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+
+  .contact-info { }
+
+  .info-title {
+    font-family: var(--serif);
+    font-size: 28px; line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .info-body {
+    font-size: 14px; color: var(--ink2);
+    line-height: 1.75; font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .info-badge {
+    font-size: 12px; color: var(--ink2);
+    background: var(--cream2);
+    border: 1px solid var(--border);
+    padding: 5px 12px; border-radius: 100px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 3rem 2rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .footer-top {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(248,250,252,0.1);
+    flex-wrap: wrap;
+  }
+
+  .footer-brand-name {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 4px;
+  }
+
+  .footer-brand-sub {
+    font-size: 12px; color: var(--ink4);
+  }
+
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+
+  .footer-links a {
+    font-size: 13px; color: var(--ink4);
+    text-decoration: none; transition: color 0.15s;
+    cursor: pointer;
+  }
+
+  .footer-links a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-legal {
+    font-size: 12px; color: var(--ink3);
+    line-height: 1.6;
+  }
+
+  /* ── LEGAL PAGES ── */
+  .legal-page {
+    display: none;
+    max-width: 720px; margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .legal-page.active { display: block; }
+
+  .legal-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--ink3);
+    cursor: pointer; margin-bottom: 2rem;
+    transition: color 0.15s;
+    background: none; border: none;
+    font-family: var(--sans);
+  }
+
+  .legal-back:hover { color: var(--ink); }
+  .legal-back::before { content: '←'; }
+
+  .legal-title {
+    font-family: var(--serif);
+    font-size: 36px; letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-date {
+    font-size: 12px; color: var(--ink3);
+    margin-bottom: 3rem; padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .legal-section { margin-bottom: 2.5rem; }
+
+  .legal-num {
+    font-size: 10px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ink3); margin-bottom: 4px;
+  }
+
+  .legal-section-title {
+    font-size: 17px; font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-body {
+    font-size: 14px; color: var(--ink2);
+    line-height: 1.8; font-weight: 400;
+  }
+
+  .legal-body ul { padding-left: 1.25rem; margin: 0.5rem 0; }
+  .legal-body li { margin-bottom: 5px; }
+
+  .legal-notice {
+    background: var(--cream2);
+    border-left: 2px solid var(--border);
+    padding: 0.875rem 1rem;
+    border-radius: 0;
+    font-size: 13px; color: var(--ink2);
+    line-height: 1.7; margin-top: 0.75rem;
+  }
+
+  .legal-divider {
+    border: none;
+    border-top: 1px solid var(--border2);
+    margin: 2rem 0;
+  }
+
+  .case-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin-top: 0.75rem;
+  }
+
+  .case-card {
+    background: var(--cream2);
+    border-radius: 8px; padding: 0.875rem 1rem;
+  }
+
+  .case-tag {
+    font-size: 10px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .case-tag.yes { color: var(--accent); }
+  .case-tag.no { color: var(--error); }
+  .case-text { font-size: 12px; color: var(--ink2); line-height: 1.5; }
+
+  /* ── MAIN PAGE WRAPPER ── */
+  #main-page { display: block; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2.5rem; min-height: auto; }
+    .hero-right { order: -1; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .steps-grid::before { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .nav-links .hide-mobile { display: none; }
+    .case-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .section-inner { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#" onclick="showMain()">
+    <img src="assets/icon.png" alt="TechCare" class="nav-logo">
+    <span class="nav-wordmark">TechCare</span>
+  </a>
+  <ul class="nav-links">
+    <li class="hide-mobile"><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+    <li class="hide-mobile"><a href="#how" data-en="How it works" data-es="Cómo funciona">How it works</a></li>
+    <li><a href="#contact" class="nav-contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    <li class="lang-toggle">
+      <button onclick="setLang('en')" id="lang-en" class="lang-btn active">EN</button>
+      <span class="lang-sep">/</span>
+      <button onclick="setLang('es')" id="lang-es" class="lang-btn">ES</button>
+    </li>
+  </ul>
+</nav>
+
+<!-- MAIN PAGE -->
+<div id="main-page">
+
+  <!-- HERO -->
+  <section>
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-tag"
+          data-en='<span class="hero-tag-dot"></span> Remote Technical Support'
+          data-es='<span class="hero-tag-dot"></span> Soporte Técnico Remoto'>
+          <span class="hero-tag-dot"></span>
+          Remote Technical Support
+        </div>
+        <h1 class="hero-h1"
+          data-en='Remote technical support.<br><span class="hero-h1-sub"><em>No subscriptions.</em><br>No automatic charges.</span>'
+          data-es='Soporte técnico remoto.<br><span class="hero-h1-sub"><em>Sin suscripciones.</em><br>Sin cargos automáticos.</span>'>Remote technical support.<br><span class="hero-h1-sub"><em>No subscriptions.</em><br>No automatic charges.</span></h1>
+        <p class="hero-body"
+          data-en="TechCare provides remote technical assistance for personal devices — computers, phones, and tablets. Direct support, manual activation, no automatic charges."
+          data-es="TechCare ofrece asistencia técnica remota para dispositivos personales — computadoras, teléfonos y tabletas. Soporte directo, activación manual, sin cargos automáticos.">TechCare provides remote technical assistance for personal devices — computers, phones, and tablets. Direct support, manual activation, no automatic charges.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary" data-en="Contact support" data-es="Contactar soporte">Contact support</a>
+          <a href="#how" class="btn-secondary" data-en="See how it works" data-es="Cómo funciona">See how it works</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="card-dots">
+              <div class="card-dot r"></div>
+              <div class="card-dot y"></div>
+              <div class="card-dot g"></div>
+            </div>
+            <div class="card-title-bar" data-en="TechCare Support" data-es="TechCare Soporte">TechCare Support</div>
+          </div>
+          <div class="hero-card-body">
+            <div class="card-message">
+              <div class="card-avatar">TC</div>
+              <div class="card-bubble"
+                data-en="Hi! My laptop won't connect to WiFi. It was working fine yesterday."
+                data-es="¡Hola! Mi laptop no se conecta al WiFi. Ayer funcionaba bien.">Hi! My laptop won't connect to WiFi. It was working fine yesterday.</div>
+            </div>
+            <div class="card-message right">
+              <div class="card-bubble right"
+                data-en="Got it — let's take a look. Can you go to Settings → Network?"
+                data-es="Entendido — revisemos. ¿Puedes ir a Configuración → Red?">Got it — let's take a look. Can you go to Settings → Network?</div>
+            </div>
+            <div class="card-message">
+              <div class="card-avatar">TC</div>
+              <div class="card-bubble"
+                data-en="Ok I see it now, there's a yellow triangle on the connection."
+                data-es="Ok ya lo veo, hay un triángulo amarillo en la conexión.">Ok I see it now, there's a yellow triangle on the connection.</div>
+            </div>
+            <div class="card-status">
+              <div class="status-icon">✓</div>
+              <div class="status-text">
+                <p class="status-title" data-en="Issue resolved" data-es="Problema resuelto">Issue resolved</p>
+                <p class="status-sub" data-en="Driver conflict fixed remotely · 18 min" data-es="Conflicto de driver resuelto remotamente · 18 min">Driver conflict fixed remotely · 18 min</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICE STRIP -->
+  <div class="notice-strip">
+    <p data-en="No automatic renewals" data-es="Sin renovaciones automáticas">No automatic renewals</p>
+    <p>·</p>
+    <p data-en="Manual activation" data-es="Activación manual">Manual activation</p>
+    <p>·</p>
+    <p data-en="No subscriptions" data-es="Sin suscripciones">No subscriptions</p>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-tag" data-en="What's included" data-es="Qué incluye">What's included</p>
+      <h2 class="section-h2" data-en="What TechCare covers" data-es="Qué cubre TechCare">What TechCare covers</h2>
+      <p class="section-lead"
+        data-en="Each support period includes remote technical assistance for personal devices. Independent technical support service — no automation, no queues."
+        data-es="Cada período de soporte incluye asistencia técnica remota para dispositivos personales. Servicio de soporte técnico independiente — sin automatización, sin filas.">Each support period includes remote technical assistance for personal devices. Independent technical support service — no automation, no queues.</p>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <p class="service-name" data-en="Remote diagnosis" data-es="Diagnóstico remoto">Remote diagnosis</p>
+          <p class="service-desc"
+            data-en="We help identify software and configuration issues through guided remote assistance."
+            data-es="Ayudamos a identificar problemas de software y configuración mediante asistencia remota guiada.">We help identify software and configuration issues through guided remote assistance.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <p class="service-name" data-en="Device configuration" data-es="Configuración de dispositivos">Device configuration</p>
+          <p class="service-desc"
+            data-en="Setup and settings guidance for computers, phones, and tablets."
+            data-es="Guía de instalación y configuración para computadoras, teléfonos y tabletas.">Setup and settings guidance for computers, phones, and tablets.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <p class="service-name" data-en="Troubleshooting" data-es="Resolución de problemas">Troubleshooting</p>
+          <p class="service-desc"
+            data-en="Step-by-step assistance for software errors, slow performance, and connectivity issues."
+            data-es="Asistencia paso a paso para errores de software, rendimiento lento y problemas de conectividad.">Step-by-step assistance for software errors, slow performance, and connectivity issues.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <p class="service-name" data-en="Technical guidance" data-es="Orientación técnica">Technical guidance</p>
+          <p class="service-desc"
+            data-en="Advice on device security, app configuration, and general technical questions."
+            data-es="Asesoría sobre seguridad de dispositivos, configuración de apps y preguntas técnicas generales.">Advice on device security, app configuration, and general technical questions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-inner">
+      <p class="section-tag" data-en="How it works" data-es="Cómo funciona">How it works</p>
+      <h2 class="section-h2"
+        data-en='Simple. Manual.<br>No surprises.'
+        data-es='Simple. Manual.<br>Sin sorpresas.'>Simple. Manual.<br>No surprises.</h2>
+      <p class="section-lead"
+        data-en="Our process is fully manual — a real person handles every step. Nothing happens automatically."
+        data-es="Nuestro proceso es completamente manual — una persona real se encarga de cada paso. Nada sucede automáticamente.">Our process is fully manual — a real person handles every step. Nothing happens automatically.</p>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <p class="step-title" data-en="Contact us" data-es="Contáctanos">Contact us</p>
+          <p class="step-desc"
+            data-en="Reach us via WhatsApp or email. Tell us what you need help with and we'll confirm what's included."
+            data-es="Escríbenos por WhatsApp o email. Cuéntanos en qué necesitas ayuda y confirmaremos qué incluye el servicio.">Reach us via WhatsApp or email. Tell us what you need help with and we'll confirm what's included.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <p class="step-title" data-en="We send a secure payment link" data-es="Enviamos un enlace de pago seguro">We send a secure payment link</p>
+          <p class="step-desc"
+            data-en="Once we confirm the service, we send you a specific payment link for your chosen period."
+            data-es="Una vez confirmado el servicio, te enviamos un enlace de pago específico para el período elegido.">Once we confirm the service, we send you a specific payment link for your chosen period.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <p class="step-title" data-en="Pay &amp; activate" data-es="Paga y activa">Pay & activate</p>
+          <p class="step-desc"
+            data-en="After payment is confirmed, your support period is manually activated and you receive confirmation directly."
+            data-es="Una vez confirmado el pago, tu período de soporte se activa manualmente y recibes la confirmación directamente.">After payment is confirmed, your support period is manually activated and you receive confirmation directly.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <p class="step-title" data-en="Renewal is optional" data-es="La renovación es opcional">Renewal is optional</p>
+          <p class="step-desc"
+            data-en="Nothing renews automatically. If you want to continue, you contact us and we send a new link."
+            data-es="Nada se renueva automáticamente. Si deseas continuar, nos contactas y enviamos un nuevo enlace.">Nothing renews automatically. If you want to continue, you contact us and we send a new link.</p>
+          <span class="step-badge" data-en="No auto-charges" data-es="Sin cargos automáticos">No auto-charges</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="section-tag" data-en="Contact" data-es="Contacto">Contact</p>
+          <h2 class="info-title" data-en="Let's get your device working." data-es="Pongamos tu dispositivo a funcionar.">Let's get your device working.</h2>
+          <p class="info-body"
+            data-en='Independent technical support service serving clients in the US and Mexico. Reach out through either channel — a real person handles every request.<br><br>Atendemos en español e inglés.'
+            data-es='Servicio de soporte técnico independiente para clientes en EE.UU. y México. Escríbenos por cualquiera de los dos canales — una persona real atiende cada solicitud.<br><br>We also provide support in English.'>Independent technical support service serving clients in the US and Mexico. Reach out through either channel — a real person handles every request.<br><br>
+          Atendemos en español e inglés.</p>
+          <div class="info-badges">
+            <span class="info-badge" data-en="In English" data-es="En inglés">In English</span>
+            <span class="info-badge" data-en="En español" data-es="En español">En español</span>
+            <span class="info-badge" data-en="US &amp; Mexico" data-es="EE.UU. y México">US & Mexico</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-method">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <p class="contact-type">WhatsApp</p>
+              <a href="https://wa.me/XXXXXXXXXX" class="contact-value" style="text-decoration:none; color:var(--ink);" data-en="Open WhatsApp" data-es="Abrir WhatsApp">Open WhatsApp</a>
+              <p class="contact-note" data-en="Response times may vary depending on demand." data-es="Los tiempos de respuesta pueden variar según la demanda.">Response times may vary depending on demand.</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <p class="contact-type">Email</p>
+              <p class="contact-value">soporte@gettechcare.com</p>
+              <p class="contact-note" data-en="General inquiries and questions" data-es="Consultas generales y preguntas">General inquiries and questions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /#main-page -->
+
+<!-- TERMS PAGE -->
+<div id="terms-page" class="legal-page">
+  <div style="max-width:720px;margin:0 auto;padding:4rem 2rem 6rem;">
+    <button class="legal-back" onclick="showMain()" data-en=" Back to TechCare" data-es=" Volver a TechCare"> Back to TechCare</button>
+    <h1 class="legal-title" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</h1>
+    <p class="legal-date" data-en="Effective date: June 1, 2025" data-es="Fecha de vigencia: 1 de junio de 2025">Effective date: June 1, 2025</p>
+
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 1" data-es="Sección 1">Section 1</p>
+      <p class="legal-section-title" data-en="About TechCare" data-es="Acerca de TechCare">About TechCare</p>
+      <p class="legal-body"
+        data-en='TechCare ("we", "us", "the service") is a remote technical support service operated under the TechCare brand. We provide digital assistance for personal devices including diagnosis, configuration, and troubleshooting support delivered remotely via chat or designated communication channels.'
+        data-es='TechCare ("nosotros", "el servicio") es un servicio de soporte técnico remoto operado bajo la marca TechCare. Ofrecemos asistencia digital para dispositivos personales, incluyendo diagnóstico, configuración y resolución de problemas, prestados de forma remota a través de chat o canales de comunicación designados.'>TechCare ("we", "us", "the service") is a remote technical support service operated under the TechCare brand. We provide digital assistance for personal devices including diagnosis, configuration, and troubleshooting support delivered remotely via chat or designated communication channels.</p>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 2" data-es="Sección 2">Section 2</p>
+      <p class="legal-section-title" data-en="Scope of Service" data-es="Alcance del Servicio">Scope of Service</p>
+      <div class="legal-body">
+        <p data-en="TechCare provides remote technical support for personal devices (computers, smartphones, tablets). Our service includes:" data-es="TechCare ofrece soporte técnico remoto para dispositivos personales (computadoras, smartphones, tabletas). Nuestro servicio incluye:">TechCare provides remote technical support for personal devices (computers, smartphones, tablets). Our service includes:</p>
+        <ul>
+          <li data-en="Remote diagnosis of software issues" data-es="Diagnóstico remoto de problemas de software">Remote diagnosis of software issues</li>
+          <li data-en="Device configuration and setup assistance" data-es="Asistencia en configuración e instalación de dispositivos">Device configuration and setup assistance</li>
+          <li data-en="General technical troubleshooting" data-es="Resolución general de problemas técnicos">General technical troubleshooting</li>
+          <li data-en="Guidance and recommendations for personal device use" data-es="Orientación y recomendaciones para el uso de dispositivos personales">Guidance and recommendations for personal device use</li>
+        </ul>
+        <p data-en="TechCare does not include physical repairs, hardware replacement, on-site visits, or guarantees of specific outcomes. Support is provided on a best-effort basis." data-es="TechCare no incluye reparaciones físicas, reemplazo de hardware, visitas presenciales ni garantía de resultados específicos. El soporte se proporciona con base en el mejor esfuerzo.">TechCare does not include physical repairs, hardware replacement, on-site visits, or guarantees of specific outcomes. Support is provided on a best-effort basis.</p>
+      </div>
+      <div class="legal-notice"
+        data-en="This is a 100% digital service. It does not include physical products, on-site visits, or guarantees of specific outcomes."
+        data-es="Este servicio es 100% digital. No incluye productos físicos, visitas presenciales ni garantía de resultados específicos.">Este servicio es 100% digital. No incluye productos físicos, visitas presenciales ni garantía de resultados específicos.</div>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 3" data-es="Sección 3">Section 3</p>
+      <p class="legal-section-title" data-en="Payment &amp; Service Periods" data-es="Pagos y Períodos de Servicio">Payment & Service Periods</p>
+      <p class="legal-body"
+        data-en='TechCare support is offered in fixed periods (1 month, 3 months, or 6 months). Payment is made in advance via the secure payment link provided by TechCare.<br><br><strong>Renewals are not automatic.</strong> Each payment activates a new support period manually. Clients are never enrolled in automatic recurring charges without explicit consent.<br><br>Support activation is confirmed individually after each payment is received and verified.'
+        data-es='El soporte de TechCare se ofrece en períodos fijos (1 mes, 3 meses o 6 meses). El pago se realiza por adelantado mediante el enlace de pago seguro proporcionado por TechCare.<br><br><strong>Las renovaciones no son automáticas.</strong> Cada pago activa un nuevo período de soporte de forma manual. Los clientes nunca son inscritos en cargos recurrentes automáticos sin consentimiento explícito.<br><br>La activación del soporte se confirma individualmente después de recibir y verificar cada pago.'>TechCare support is offered in fixed periods (1 month, 3 months, or 6 months). Payment is made in advance via the secure payment link provided by TechCare.<br><br>
+      <strong>Renewals are not automatic.</strong> Each payment activates a new support period manually. Clients are never enrolled in automatic recurring charges without explicit consent.<br><br>
+      Support activation is confirmed individually after each payment is received and verified.</p>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 4" data-es="Sección 4">Section 4</p>
+      <p class="legal-section-title" data-en="Refund Policy" data-es="Política de Reembolso">Refund Policy</p>
+      <p class="legal-body"
+        data-en='Due to the digital nature of this service, refunds are not issued once a support period has been activated and service access has been confirmed to the client.<br><br>If you believe there has been an error or the service was not activated, you must contact us within <strong>48 hours</strong> of payment at soporte@gettechcare.com. We will review each case individually.'
+        data-es='Debido a la naturaleza digital de este servicio, no se emiten reembolsos una vez que el período de soporte ha sido activado y el acceso al servicio ha sido confirmado al cliente.<br><br>Si crees que hubo un error o el servicio no fue activado, debes contactarnos dentro de las <strong>48 horas</strong> posteriores al pago a soporte@gettechcare.com. Revisaremos cada caso individualmente.'>Due to the digital nature of this service, refunds are not issued once a support period has been activated and service access has been confirmed to the client.<br><br>
+      If you believe there has been an error or the service was not activated, you must contact us within <strong>48 hours</strong> of payment at soporte@gettechcare.com. We will review each case individually.</p>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 5" data-es="Sección 5">Section 5</p>
+      <p class="legal-section-title" data-en="Client Responsibilities" data-es="Responsabilidades del Cliente">Client Responsibilities</p>
+      <div class="legal-body">
+        <p data-en="By using TechCare, you agree to:" data-es="Al usar TechCare, aceptas:">By using TechCare, you agree to:</p>
+        <ul>
+          <li data-en="Provide accurate contact information for support identification" data-es="Proporcionar información de contacto precisa para la identificación del soporte">Provide accurate contact information for support identification</li>
+          <li data-en="Use the service for personal, non-commercial purposes only" data-es="Usar el servicio únicamente para fines personales, no comerciales">Use the service for personal, non-commercial purposes only</li>
+          <li data-en="Not share your support access with third parties" data-es="No compartir tu acceso al soporte con terceros">Not share your support access with third parties</li>
+          <li data-en="Cooperate with technicians to enable effective remote support" data-es="Cooperar con los técnicos para facilitar un soporte remoto efectivo">Cooperate with technicians to enable effective remote support</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 6" data-es="Sección 6">Section 6</p>
+      <p class="legal-section-title" data-en="Limitation of Liability" data-es="Limitación de Responsabilidad">Limitation of Liability</p>
+      <p class="legal-body"
+        data-en='TechCare provides support on a best-effort basis. We are not liable for data loss occurring during or after remote support sessions, device damage caused by pre-existing conditions, inability to resolve issues outside the scope of remote support, or third-party service interruptions.<br><br>Our total liability in any case shall not exceed the amount paid by the client for the current support period.'
+        data-es='TechCare proporciona soporte con base en el mejor esfuerzo. No somos responsables por la pérdida de datos durante o después de las sesiones de soporte remoto, daños al dispositivo causados por condiciones preexistentes, la incapacidad de resolver problemas fuera del alcance del soporte remoto o interrupciones de servicios de terceros.<br><br>Nuestra responsabilidad total en cualquier caso no excederá el monto pagado por el cliente por el período de soporte vigente.'>TechCare provides support on a best-effort basis. We are not liable for data loss occurring during or after remote support sessions, device damage caused by pre-existing conditions, inability to resolve issues outside the scope of remote support, or third-party service interruptions.<br><br>
+      Our total liability in any case shall not exceed the amount paid by the client for the current support period.</p>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 7" data-es="Sección 7">Section 7</p>
+      <p class="legal-section-title" data-en="Privacy" data-es="Privacidad">Privacy</p>
+      <p class="legal-body"
+        data-en="TechCare collects only the information necessary to provide and identify support services (name, phone number or ID, and contact channel). We do not sell or share client data with third parties."
+        data-es="TechCare recopila únicamente la información necesaria para proporcionar e identificar los servicios de soporte (nombre, número de teléfono o identificación y canal de contacto). No vendemos ni compartimos datos de clientes con terceros.">TechCare collects only the information necessary to provide and identify support services (name, phone number or ID, and contact channel). We do not sell or share client data with third parties.</p>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 8" data-es="Sección 8">Section 8</p>
+      <p class="legal-section-title" data-en="Governing Law" data-es="Legislación Aplicable">Governing Law</p>
+      <p class="legal-body"
+        data-en="These terms are governed by the laws of the United Mexican States (México). For clients in the United States: by using this service you acknowledge that TechCare is operated from Mexico and that Mexican law governs this agreement."
+        data-es="Estos términos se rigen por las leyes de los Estados Unidos Mexicanos (México). Para clientes en Estados Unidos: al usar este servicio, reconoces que TechCare opera desde México y que la legislación mexicana rige este acuerdo.">These terms are governed by the laws of the United Mexican States (México). For clients in the United States: by using this service you acknowledge that TechCare is operated from Mexico and that Mexican law governs this agreement.</p>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Contact" data-es="Contacto">Contact</p>
+      <p class="legal-section-title" data-en="Questions" data-es="Preguntas">Questions</p>
+      <p class="legal-body">Email: soporte@gettechcare.com &nbsp;·&nbsp; TechCare · gettechcare.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- REFUND PAGE -->
+<div id="refund-page" class="legal-page">
+  <div style="max-width:720px;margin:0 auto;padding:4rem 2rem 6rem;">
+    <button class="legal-back" onclick="showMain()" data-en=" Back to TechCare" data-es=" Volver a TechCare"> Back to TechCare</button>
+    <h1 class="legal-title" data-en="Refund Policy" data-es="Política de Reembolso">Refund Policy</h1>
+    <p class="legal-date" data-en="Effective date: June 1, 2025" data-es="Fecha de vigencia: 1 de junio de 2025">Effective date: June 1, 2025</p>
+
+    <div class="legal-section">
+      <p class="legal-num" data-en="Overview" data-es="Resumen">Overview</p>
+      <p class="legal-section-title" data-en="General principle" data-es="Principio general">General principle</p>
+      <p class="legal-body"
+        data-en="TechCare provides a digital remote support service. Because the service begins immediately upon activation and no physical product is involved, our general policy is that payments are non-refundable once a support period has been confirmed and activated."
+        data-es="TechCare proporciona un servicio digital de soporte remoto. Dado que el servicio comienza inmediatamente tras la activación y no involucra productos físicos, nuestra política general es que los pagos no son reembolsables una vez que el período de soporte ha sido confirmado y activado.">TechCare provides a digital remote support service. Because the service begins immediately upon activation and no physical product is involved, our general policy is that payments are non-refundable once a support period has been confirmed and activated.</p>
+      <div class="legal-notice"
+        data-en="Once your support period is activated and confirmed, the payment is final. Renewals are never automatic — you only pay when you choose to continue."
+        data-es="Una vez activado y confirmado tu período de soporte, el pago es definitivo. Las renovaciones nunca son automáticas — solo pagas cuando decides continuar.">Once your support period is activated and confirmed, the payment is final. Renewals are never automatic — you only pay when you choose to continue.</div>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 1" data-es="Sección 1">Section 1</p>
+      <p class="legal-section-title" data-en="When refunds are not issued" data-es="Cuándo no se emiten reembolsos">When refunds are not issued</p>
+      <div class="legal-body">
+        <p data-en="We do not issue refunds in the following situations:" data-es="No emitimos reembolsos en las siguientes situaciones:">We do not issue refunds in the following situations:</p>
+        <ul>
+          <li data-en="The support period has been activated and access confirmed to you" data-es="El período de soporte ha sido activado y el acceso confirmado">The support period has been activated and access confirmed to you</li>
+          <li data-en="You no longer need the service during an active period" data-es="Ya no necesitas el servicio durante un período activo">You no longer need the service during an active period</li>
+          <li data-en="The issue you contacted us about was resolved during the support session" data-es="El problema por el que nos contactaste fue resuelto durante la sesión de soporte">The issue you contacted us about was resolved during the support session</li>
+          <li data-en="You changed your mind after activation" data-es="Cambiaste de opinión después de la activación">You changed your mind after activation</li>
+          <li data-en="The request is made more than 48 hours after payment" data-es="La solicitud se realiza más de 48 horas después del pago">The request is made more than 48 hours after payment</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 2" data-es="Sección 2">Section 2</p>
+      <p class="legal-section-title" data-en="When we will review your case" data-es="Cuándo revisaremos tu caso">When we will review your case</p>
+      <div class="case-grid">
+        <div class="case-card">
+          <p class="case-tag yes" data-en="May qualify" data-es="Puede aplicar">May qualify</p>
+          <p class="case-text"
+            data-en="Charged but support period was never activated or confirmed by TechCare"
+            data-es="Se realizó el cobro pero el período de soporte nunca fue activado ni confirmado por TechCare">Charged but support period was never activated or confirmed by TechCare</p>
+        </div>
+        <div class="case-card">
+          <p class="case-tag yes" data-en="May qualify" data-es="Puede aplicar">May qualify</p>
+          <p class="case-text"
+            data-en="Charged more than once for the same period due to a payment error"
+            data-es="Se cobró más de una vez por el mismo período debido a un error de pago">Charged more than once for the same period due to a payment error</p>
+        </div>
+        <div class="case-card">
+          <p class="case-tag no" data-en="Does not qualify" data-es="No aplica">Does not qualify</p>
+          <p class="case-text"
+            data-en="Service was activated but you did not use it during the support period"
+            data-es="El servicio fue activado pero no lo utilizaste durante el período de soporte">Service was activated but you did not use it during the support period</p>
+        </div>
+        <div class="case-card">
+          <p class="case-tag no" data-en="Does not qualify" data-es="No aplica">Does not qualify</p>
+          <p class="case-text"
+            data-en="Unsatisfied with the outcome of a session that was delivered"
+            data-es="Insatisfecho con el resultado de una sesión que fue proporcionada">Unsatisfied with the outcome of a session that was delivered</p>
+        </div>
+      </div>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 3" data-es="Sección 3">Section 3</p>
+      <p class="legal-section-title" data-en="How to request a review" data-es="Cómo solicitar una revisión">How to request a review</p>
+      <p class="legal-body"
+        data-en='Contact us within <strong>48 hours of payment</strong> at soporte@gettechcare.com. Include your payment reference, phone number or ID used at checkout, and a brief description of the issue. We will respond within 1 business day.'
+        data-es='Contáctanos dentro de las <strong>48 horas posteriores al pago</strong> a soporte@gettechcare.com. Incluye tu referencia de pago, número de teléfono o identificación utilizada en el pago y una breve descripción del problema. Responderemos en 1 día hábil.'>Contact us within <strong>48 hours of payment</strong> at soporte@gettechcare.com. Include your payment reference, phone number or ID used at checkout, and a brief description of the issue. We will respond within 1 business day.</p>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Section 4" data-es="Sección 4">Section 4</p>
+      <p class="legal-section-title" data-en="Chargebacks &amp; disputes" data-es="Contracargos y disputas">Chargebacks & disputes</p>
+      <p class="legal-body"
+        data-en='If you initiate a chargeback without first contacting us, we reserve the right to provide evidence of service delivery to the payment processor, including communication records, activation confirmation, and support session details.<br><br>We encourage you to reach out directly — most issues can be resolved quickly without involving your bank or payment provider.'
+        data-es='Si inicias un contracargo sin contactarnos primero, nos reservamos el derecho de proporcionar evidencia de la prestación del servicio al procesador de pagos, incluyendo registros de comunicación, confirmación de activación y detalles de las sesiones de soporte.<br><br>Te recomendamos contactarnos directamente — la mayoría de los problemas se pueden resolver rápidamente sin involucrar a tu banco o proveedor de pagos.'>If you initiate a chargeback without first contacting us, we reserve the right to provide evidence of service delivery to the payment processor, including communication records, activation confirmation, and support session details.<br><br>
+      We encourage you to reach out directly — most issues can be resolved quickly without involving your bank or payment provider.</p>
+    </div>
+    <hr class="legal-divider">
+    <div class="legal-section">
+      <p class="legal-num" data-en="Contact" data-es="Contacto">Contact</p>
+      <p class="legal-section-title" data-en="Still have questions?" data-es="¿Aún tienes preguntas?">Still have questions?</p>
+      <p class="legal-body">Email: soporte@gettechcare.com &nbsp;·&nbsp; TechCare · gettechcare.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand-name">TechCare</p>
+        <p class="footer-brand-sub" data-en="Remote Technical Support" data-es="Soporte Técnico Remoto">Remote Technical Support</p>
+      </div>
+      <div class="footer-links">
+        <a onclick="showPage('terms-page')" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
+        <a onclick="showPage('refund-page')" data-en="Refund Policy" data-es="Política de Reembolso">Refund Policy</a>
+        <a href="mailto:soporte@gettechcare.com">soporte@gettechcare.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal"
+        data-en="© 2025 TechCare. Independent technical support service. Digital service only. No physical products included."
+        data-es="© 2025 TechCare. Servicio de soporte técnico independiente. Servicio 100% digital. No incluye productos físicos.">© 2025 TechCare. Independent technical support service. Digital service only. No physical products included.</p>
+      <p class="footer-legal"
+        data-en="Renewal is not automatic. 100% digital service. gettechcare.com"
+        data-es="La renovación no es automática. Servicio 100% digital. gettechcare.com">Renewal is not automatic. 100% digital service. gettechcare.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function showPage(id) {
+    document.getElementById('main-page').style.display = 'none';
+    document.querySelectorAll('.legal-page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function showMain() {
+    document.getElementById('main-page').style.display = 'block';
+    document.querySelectorAll('.legal-page').forEach(p => p.classList.remove('active'));
+    window.scrollTo(0, 0);
+  }
+
+  function setLang(lang) {
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    });
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+    localStorage.setItem('techcare-lang', lang);
+    document.documentElement.lang = lang;
+  }
+  const savedLang = localStorage.getItem('techcare-lang') || 'en';
+  setLang(savedLang);
+</script>
+
+</body>
+</html>
