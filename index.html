@@ -378,6 +378,64 @@
     line-height: 1.6; font-weight: 400;
   }
 
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-name {
+    font-size: 13px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink3);
+    margin-bottom: 0.75rem;
+  }
+
+  .pricing-price {
+    font-family: var(--serif);
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-price-unit {
+    font-size: 13px;
+    color: var(--ink3);
+    font-family: var(--sans);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+
+  .pricing-desc {
+    font-size: 13px;
+    color: var(--ink2);
+    line-height: 1.6;
+    margin-top: 1rem;
+    font-weight: 400;
+  }
+
+  .pricing-note {
+    font-size: 13px;
+    color: var(--ink3);
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 400;
+  }
+
   /* ── HOW IT WORKS ── */
   .steps-grid {
     display: grid;
@@ -695,6 +753,7 @@
     .hero-right { order: -1; }
     .steps-grid { grid-template-columns: 1fr 1fr; }
     .steps-grid::before { display: none; }
+    .pricing-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .nav-links .hide-mobile { display: none; }
     .case-grid { grid-template-columns: 1fr; }
@@ -716,6 +775,7 @@
   </a>
   <ul class="nav-links">
     <li class="hide-mobile"><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+    <li class="hide-mobile"><a href="#pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
     <li class="hide-mobile"><a href="#how" data-en="How it works" data-es="Cómo funciona">How it works</a></li>
     <li><a href="#contact" class="nav-contact" data-en="Contact" data-es="Contacto">Contact</a></li>
     <li class="lang-toggle">
@@ -746,7 +806,7 @@
           data-en="TechCare provides remote technical assistance for personal devices — computers, phones, and tablets. Direct support, manual activation, no automatic charges."
           data-es="TechCare ofrece asistencia técnica remota para dispositivos personales — computadoras, teléfonos y tabletas. Soporte directo, activación manual, sin cargos automáticos.">TechCare provides remote technical assistance for personal devices — computers, phones, and tablets. Direct support, manual activation, no automatic charges.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary" data-en="Contact support" data-es="Contactar soporte">Contact support</a>
+          <a href="#contact" class="btn-primary" data-en="Request support" data-es="Solicitar soporte">Request support</a>
           <a href="#how" class="btn-secondary" data-en="See how it works" data-es="Cómo funciona">See how it works</a>
         </div>
       </div>
@@ -851,6 +911,45 @@
 
   <hr class="section-divider">
 
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-inner">
+      <p class="section-tag" data-en="Pricing" data-es="Precios">Pricing</p>
+      <h2 class="section-h2" data-en="Simple, fixed pricing" data-es="Precios simples y fijos">Simple, fixed pricing</h2>
+      <p class="section-lead"
+        data-en="Choose the support period that fits your needs. No subscriptions, no automatic renewals."
+        data-es="Elige el período de soporte que se ajuste a tus necesidades. Sin suscripciones, sin renovaciones automáticas.">Choose the support period that fits your needs. No subscriptions, no automatic renewals.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <p class="pricing-name" data-en="1 Month" data-es="1 Mes">1 Month</p>
+          <p class="pricing-price">$25<span class="pricing-price-unit">USD</span></p>
+          <p class="pricing-desc"
+            data-en="Full access to remote technical support for 30 days."
+            data-es="Acceso completo a soporte técnico remoto por 30 días.">Full access to remote technical support for 30 days.</p>
+        </div>
+        <div class="pricing-card">
+          <p class="pricing-name" data-en="3 Months" data-es="3 Meses">3 Months</p>
+          <p class="pricing-price">$40<span class="pricing-price-unit">USD</span></p>
+          <p class="pricing-desc"
+            data-en="Full access for 90 days. Save $35 vs monthly."
+            data-es="Acceso completo por 90 días. Ahorra $35 vs mensual.">Full access for 90 days. Save $35 vs monthly.</p>
+        </div>
+        <div class="pricing-card">
+          <p class="pricing-name" data-en="6 Months" data-es="6 Meses">6 Months</p>
+          <p class="pricing-price">$70<span class="pricing-price-unit">USD</span></p>
+          <p class="pricing-desc"
+            data-en="Full access for 180 days. Save $80 vs monthly."
+            data-es="Acceso completo por 180 días. Ahorra $80 vs mensual.">Full access for 180 days. Save $80 vs monthly.</p>
+        </div>
+      </div>
+      <p class="pricing-note"
+        data-en="Plans are available upon request. We provide services to approved clients only. Contact us to get started."
+        data-es="Los planes están disponibles bajo solicitud. Prestamos servicios solo a clientes aprobados. Contáctanos para comenzar.">Plans are available upon request. We provide services to approved clients only. Contact us to get started.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
   <!-- HOW IT WORKS -->
   <section id="how">
     <div class="section-inner">
@@ -866,29 +965,29 @@
           <div class="step-num">1</div>
           <p class="step-title" data-en="Contact us" data-es="Contáctanos">Contact us</p>
           <p class="step-desc"
-            data-en="Reach us via WhatsApp or email. Tell us what you need help with and we'll confirm what's included."
-            data-es="Escríbenos por WhatsApp o email. Cuéntanos en qué necesitas ayuda y confirmaremos qué incluye el servicio.">Reach us via WhatsApp or email. Tell us what you need help with and we'll confirm what's included.</p>
+            data-en="Reach us via WhatsApp or email and tell us what you need."
+            data-es="Escríbenos por WhatsApp o email y cuéntanos qué necesitas.">Reach us via WhatsApp or email and tell us what you need.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <p class="step-title" data-en="We send a secure payment link" data-es="Enviamos un enlace de pago seguro">We send a secure payment link</p>
+          <p class="step-title" data-en="We review your request" data-es="Revisamos tu solicitud">We review your request</p>
           <p class="step-desc"
-            data-en="Once we confirm the service, we send you a specific payment link for your chosen period."
-            data-es="Una vez confirmado el servicio, te enviamos un enlace de pago específico para el período elegido.">Once we confirm the service, we send you a specific payment link for your chosen period.</p>
+            data-en="We evaluate each request individually before accepting new clients."
+            data-es="Evaluamos cada solicitud individualmente antes de aceptar nuevos clientes.">We evaluate each request individually before accepting new clients.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <p class="step-title" data-en="Pay &amp; activate" data-es="Paga y activa">Pay & activate</p>
+          <p class="step-title" data-en="We send a secure payment link" data-es="Enviamos un enlace de pago seguro">We send a secure payment link</p>
           <p class="step-desc"
-            data-en="After payment is confirmed, your support period is manually activated and you receive confirmation directly."
-            data-es="Una vez confirmado el pago, tu período de soporte se activa manualmente y recibes la confirmación directamente.">After payment is confirmed, your support period is manually activated and you receive confirmation directly.</p>
+            data-en="If approved, we send you a specific payment link for your chosen plan."
+            data-es="Si es aprobada, te enviamos un enlace de pago específico para el plan elegido.">If approved, we send you a specific payment link for your chosen plan.</p>
         </div>
         <div class="step">
           <div class="step-num">4</div>
-          <p class="step-title" data-en="Renewal is optional" data-es="La renovación es opcional">Renewal is optional</p>
+          <p class="step-title" data-en="Service begins" data-es="Comienza el servicio">Service begins</p>
           <p class="step-desc"
-            data-en="Nothing renews automatically. If you want to continue, you contact us and we send a new link."
-            data-es="Nada se renueva automáticamente. Si deseas continuar, nos contactas y enviamos un nuevo enlace.">Nothing renews automatically. If you want to continue, you contact us and we send a new link.</p>
+            data-en="After payment is confirmed, your support period is manually activated and you receive confirmation directly."
+            data-es="Una vez confirmado el pago, tu período de soporte se activa manualmente y recibes la confirmación directamente.">After payment is confirmed, your support period is manually activated and you receive confirmation directly.</p>
           <span class="step-badge" data-en="No auto-charges" data-es="Sin cargos automáticos">No auto-charges</span>
         </div>
       </div>
@@ -979,10 +1078,11 @@
       <p class="legal-num" data-en="Section 3" data-es="Sección 3">Section 3</p>
       <p class="legal-section-title" data-en="Payment &amp; Service Periods" data-es="Pagos y Períodos de Servicio">Payment & Service Periods</p>
       <p class="legal-body"
-        data-en='TechCare support is offered in fixed periods (1 month, 3 months, or 6 months). Payment is made in advance via the secure payment link provided by TechCare.<br><br><strong>Renewals are not automatic.</strong> Each payment activates a new support period manually. Clients are never enrolled in automatic recurring charges without explicit consent.<br><br>Support activation is confirmed individually after each payment is received and verified.'
-        data-es='El soporte de TechCare se ofrece en períodos fijos (1 mes, 3 meses o 6 meses). El pago se realiza por adelantado mediante el enlace de pago seguro proporcionado por TechCare.<br><br><strong>Las renovaciones no son automáticas.</strong> Cada pago activa un nuevo período de soporte de forma manual. Los clientes nunca son inscritos en cargos recurrentes automáticos sin consentimiento explícito.<br><br>La activación del soporte se confirma individualmente después de recibir y verificar cada pago.'>TechCare support is offered in fixed periods (1 month, 3 months, or 6 months). Payment is made in advance via the secure payment link provided by TechCare.<br><br>
+        data-en='TechCare support is offered in fixed periods: 1 month ($25 USD), 3 months ($40 USD), or 6 months ($70 USD). Payment is made in advance via the secure payment link provided by TechCare.<br><br><strong>Renewals are not automatic.</strong> Each payment activates a new support period manually. Clients are never enrolled in automatic recurring charges without explicit consent.<br><br>Support activation is confirmed individually after each payment is received and verified.<br><br>TechCare reserves the right to decline service requests at its sole discretion. Service is provided to approved clients only. Submitting a request does not guarantee access to the service.'
+        data-es='TechCare ofrece períodos de soporte fijos: 1 mes ($25 USD), 3 meses ($40 USD) o 6 meses ($70 USD). El pago se realiza por adelantado mediante el enlace de pago seguro proporcionado por TechCare.<br><br><strong>Las renovaciones no son automáticas.</strong> Cada pago activa un nuevo período de soporte de forma manual. Los clientes nunca son inscritos en cargos recurrentes automáticos sin consentimiento explícito.<br><br>La activación del soporte se confirma individualmente después de recibir y verificar cada pago.<br><br>TechCare se reserva el derecho de rechazar solicitudes de servicio a su sola discreción. El servicio se proporciona únicamente a clientes aprobados. Enviar una solicitud no garantiza acceso al servicio.'>TechCare support is offered in fixed periods: 1 month ($25 USD), 3 months ($40 USD), or 6 months ($70 USD). Payment is made in advance via the secure payment link provided by TechCare.<br><br>
       <strong>Renewals are not automatic.</strong> Each payment activates a new support period manually. Clients are never enrolled in automatic recurring charges without explicit consent.<br><br>
-      Support activation is confirmed individually after each payment is received and verified.</p>
+      Support activation is confirmed individually after each payment is received and verified.<br><br>
+      TechCare reserves the right to decline service requests at its sole discretion. Service is provided to approved clients only. Submitting a request does not guarantee access to the service.</p>
     </div>
     <hr class="legal-divider">
     <div class="legal-section">
@@ -1052,8 +1152,9 @@
       <p class="legal-num" data-en="Overview" data-es="Resumen">Overview</p>
       <p class="legal-section-title" data-en="General principle" data-es="Principio general">General principle</p>
       <p class="legal-body"
-        data-en="TechCare provides a digital remote support service. Because the service begins immediately upon activation and no physical product is involved, our general policy is that payments are non-refundable once a support period has been confirmed and activated."
-        data-es="TechCare proporciona un servicio digital de soporte remoto. Dado que el servicio comienza inmediatamente tras la activación y no involucra productos físicos, nuestra política general es que los pagos no son reembolsables una vez que el período de soporte ha sido confirmado y activado.">TechCare provides a digital remote support service. Because the service begins immediately upon activation and no physical product is involved, our general policy is that payments are non-refundable once a support period has been confirmed and activated.</p>
+        data-en="TechCare provides services to approved clients only. Once a client is approved and a support period is activated, the following refund policy applies.<br><br>TechCare provides a digital remote support service. Because the service begins immediately upon activation and no physical product is involved, our general policy is that payments are non-refundable once a support period has been confirmed and activated."
+        data-es="TechCare presta servicios únicamente a clientes aprobados. Una vez que un cliente es aprobado y el período de soporte es activado, aplica la siguiente política de reembolsos.<br><br>TechCare proporciona un servicio digital de soporte remoto. Dado que el servicio comienza inmediatamente tras la activación y no involucra productos físicos, nuestra política general es que los pagos no son reembolsables una vez que el período de soporte ha sido confirmado y activado.">TechCare provides services to approved clients only. Once a client is approved and a support period is activated, the following refund policy applies.<br><br>
+      TechCare provides a digital remote support service. Because the service begins immediately upon activation and no physical product is involved, our general policy is that payments are non-refundable once a support period has been confirmed and activated.</p>
       <div class="legal-notice"
         data-en="Once your support period is activated and confirmed, the payment is final. Renewals are never automatic — you only pay when you choose to continue."
         data-es="Una vez activado y confirmado tu período de soporte, el pago es definitivo. Las renovaciones nunca son automáticas — solo pagas cuando decides continuar.">Once your support period is activated and confirmed, the payment is final. Renewals are never automatic — you only pay when you choose to continue.</div>
