@@ -1042,7 +1042,7 @@
 <div id="terms-page" class="legal-page">
   <div style="max-width:720px;margin:0 auto;padding:4rem 2rem 6rem;">
     <button class="legal-back" onclick="showMain()" data-en=" Back to TechCare" data-es=" Volver a TechCare"> Back to TechCare</button>
-    <h1 class="legal-title" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</h1>
+    <h1 id="terms" class="legal-title" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</h1>
     <p class="legal-date" data-en="Effective date: June 1, 2025" data-es="Fecha de vigencia: 1 de junio de 2025">Effective date: June 1, 2025</p>
 
     <div class="legal-section">
@@ -1142,7 +1142,7 @@
 <div id="refund-page" class="legal-page">
   <div style="max-width:720px;margin:0 auto;padding:4rem 2rem 6rem;">
     <button class="legal-back" onclick="showMain()" data-en=" Back to TechCare" data-es=" Volver a TechCare"> Back to TechCare</button>
-    <h1 class="legal-title" data-en="Refund Policy" data-es="Política de Reembolso">Refund Policy</h1>
+    <h1 id="refund" class="legal-title" data-en="Refund Policy" data-es="Política de Reembolso">Refund Policy</h1>
     <p class="legal-date" data-en="Effective date: June 1, 2025" data-es="Fecha de vigencia: 1 de junio de 2025">Effective date: June 1, 2025</p>
 
     <div class="legal-section">
@@ -1278,6 +1278,16 @@
   }
   const savedLang = localStorage.getItem('techcare-lang') || 'en';
   setLang(savedLang);
+
+  const HASH_ROUTES = { '#terms': 'terms-page', '#refund': 'refund-page' };
+
+  function routeFromHash() {
+    const target = HASH_ROUTES[window.location.hash];
+    if (target) showPage(target);
+  }
+
+  window.addEventListener('hashchange', routeFromHash);
+  routeFromHash();
 </script>
 
 </body>
